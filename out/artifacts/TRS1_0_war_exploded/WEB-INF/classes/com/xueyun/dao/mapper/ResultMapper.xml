@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xueyun.dao.ResultMapper">
+
+    <select id="stuStatus" resultType="Result">
+        select * from result where user_sid=#{userSid}
+    </select>
+
+    <insert id="addStatus" parameterType="map">
+        insert into result values (null,#{userSid},#{timeId},#{stuStatus})
+    </insert>
+
+    <delete id="deleteBySid">
+        delete from result where user_sid=#{userSid}
+    </delete>
+
+    <update id="updateResultStatus">
+        update result set stu_status=2 where rid=#{rid}
+    </update>
+</mapper>

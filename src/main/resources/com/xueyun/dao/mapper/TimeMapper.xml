@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xueyun.dao.TimeMapper">
+
+    <insert id="addTime" parameterType="Time">
+        insert into time (user_id,time) values (#{userId},#{time})
+    </insert>
+
+    <delete id="deleteByTimeId">
+        delete from time where user_id=#{userId}
+    </delete>
+
+    <update id="updateTimeStatus">
+        update time set t_status=2 where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xueyun.dao.TutorMapper">
+
+    <select id="searchAllTime" parameterType="map" resultType="Tutor">
+        select t.`id`,u.`name`,u.college,t.`time`
+        from `time` t
+        inner join `user` u
+        on t.`user_id`=u.`id`
+        where t.`t_status` in (0,1)
+    </select>
+
+    <select id="searchByName" parameterType="map" resultType="Tutor">
+        select t.`id`,u.`name`,u.college,t.`time`
+        from `time` t
+        inner join `user` u
+        on t.`user_id`=u.`id`
+        where t.`t_status` in (0,1) and name like #{name}
+    </select>
+
+    <select id="searchByCollege" parameterType="map" resultType="Tutor">
+        select t.`id`,u.`name`,u.college,t.`time`
+        from `time` t
+        inner join `user` u
+        on t.`user_id`=u.`id`
+        where t.`t_status` in (0,1) and college like #{college}
+    </select>
+
+    <select id="searchByTime" parameterType="map" resultType="Tutor">
+        select t.`id`,u.`name`,u.college,t.`time`
+        from `time` t
+        inner join `user` u
+        on t.`user_id`=u.`id`
+        where t.`t_status` in (0,1) and time like #{time}
+    </select>
+
+    <select id="searchAppointTime" resultType="Tutor">
+        select u.`name`,u.college,t.time,r.stu_status
+        from `result` r
+        inner join `time` t
+        on r.`time_id`=t.`id`
+        inner join `user` u
+        on t.`user_id`=u.`id`
+        where r.`user_sid`=#{userSid}
+    </select>
+
+    <select id="searchAllStuAppointTime" resultType="Tutor">
+        SELECT u.`name`,u.sid,u.grade,t.`time`,r.stu_status
+        FROM result r
+        INNER JOIN `user` u
+        ON r.`user_sid`=u.`sid`
+        INNER JOIN `time` t
+        ON r.`time_id`=t.id
+    </select>
+    
+</mapper>

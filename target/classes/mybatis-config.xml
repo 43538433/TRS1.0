@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <!--打印日志信息-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--�?启驼峰匹�?-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!--使用别名-->
+    <typeAliases>
+        <package name="com.xueyun.entity"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/nwtest04?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/xueyun/dao/mapper/UserMapper.xml"/>
+        <mapper resource="com/xueyun/dao/mapper/TimeMapper.xml"/>
+        <mapper resource="com/xueyun/dao/mapper/ResultMapper.xml"/>
+        <mapper resource="com/xueyun/dao/mapper/TutorMapper.xml"/>
+        <mapper resource="com/xueyun/dao/mapper/StudentMapper.xml"/>
+    </mappers>
+
+</configuration>

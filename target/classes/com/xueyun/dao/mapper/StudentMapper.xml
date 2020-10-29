@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xueyun.dao.StudentMapper">
+
+    <select id="searchAppointTime" resultType="Student">
+        SELECT u.`name`,r.user_sid,college,`time`,t_status,t.`id`,r.`rid`
+        FROM result r
+        INNER JOIN `user` u
+        ON r.`user_sid`=u.`sid`
+        INNER JOIN `time` t
+        ON r.`time_id`=t.`id`
+        WHERE t.`user_id`=#{userId}
+    </select>
+
+</mapper>
